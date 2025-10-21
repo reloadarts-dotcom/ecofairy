@@ -3,9 +3,12 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const isSpanish = pathname?.startsWith('/es')
 
   return (
     <nav className="fixed top-0 w-full bg-sand-50/95 backdrop-blur-sm z-50 border-b border-sand-200">
@@ -27,18 +30,24 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-12">
-            <Link href="/" className="text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900 transition-colors">
-              Home
+          <div className="hidden md:flex space-x-12 items-center">
+            <Link href={isSpanish ? "/es" : "/"} className="text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900 transition-colors">
+              {isSpanish ? "Inicio" : "Home"}
             </Link>
-            <Link href="/about" className="text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900 transition-colors">
-              About
+            <Link href={isSpanish ? "/es/about" : "/about"} className="text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900 transition-colors">
+              {isSpanish ? "Nosotros" : "About"}
             </Link>
-            <Link href="/pricelist" className="text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900 transition-colors">
-              Services
+            <Link href={isSpanish ? "/es/pricelist" : "/pricelist"} className="text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900 transition-colors">
+              {isSpanish ? "Servicios" : "Services"}
             </Link>
-            <Link href="/team" className="text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900 transition-colors">
-              Team
+            <Link href={isSpanish ? "/es/team" : "/team"} className="text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900 transition-colors">
+              {isSpanish ? "Equipo" : "Team"}
+            </Link>
+            <Link
+              href={isSpanish ? "/" : "/es"}
+              className="text-sm tracking-wider uppercase text-sand-600 hover:text-sand-900 transition-colors flex items-center gap-1"
+            >
+              {isSpanish ? "EN" : "ES"}
             </Link>
           </div>
 
@@ -47,7 +56,7 @@ export default function Navigation() {
               href="tel:+34607079332"
               className="text-sm tracking-wider uppercase text-sand-900 border-b-2 border-sand-900 hover:border-sand-600 transition-colors pb-1"
             >
-              Book Now
+              {isSpanish ? "Reservar" : "Book Now"}
             </a>
           </div>
 
@@ -79,23 +88,29 @@ export default function Navigation() {
       {isOpen && (
         <div className="md:hidden bg-sand-50 border-t border-sand-200">
           <div className="px-6 py-6 space-y-4">
-            <Link href="/" className="block text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900">
-              Home
+            <Link href={isSpanish ? "/es" : "/"} className="block text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900">
+              {isSpanish ? "Inicio" : "Home"}
             </Link>
-            <Link href="/about" className="block text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900">
-              About
+            <Link href={isSpanish ? "/es/about" : "/about"} className="block text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900">
+              {isSpanish ? "Nosotros" : "About"}
             </Link>
-            <Link href="/pricelist" className="block text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900">
-              Services
+            <Link href={isSpanish ? "/es/pricelist" : "/pricelist"} className="block text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900">
+              {isSpanish ? "Servicios" : "Services"}
             </Link>
-            <Link href="/team" className="block text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900">
-              Team
+            <Link href={isSpanish ? "/es/team" : "/team"} className="block text-sm tracking-wider uppercase text-sand-700 hover:text-sand-900">
+              {isSpanish ? "Equipo" : "Team"}
+            </Link>
+            <Link
+              href={isSpanish ? "/" : "/es"}
+              className="block text-sm tracking-wider uppercase text-sand-600 hover:text-sand-900"
+            >
+              {isSpanish ? "English" : "Español"}
             </Link>
             <a
               href="tel:+34607079332"
               className="block text-sm tracking-wider uppercase text-sand-900 border-b-2 border-sand-900 inline-block pb-1"
             >
-              Book Now
+              {isSpanish ? "Reservar" : "Book Now"}
             </a>
           </div>
         </div>
