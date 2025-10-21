@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@theme {
+  --font-family-serif: 'Cormorant', serif;
+  --font-family-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-sand-50: #faf9f7;
+  --color-sand-100: #f5f3ef;
+  --color-sand-200: #e8e4dd;
+  --color-sand-300: #d4cec3;
+  --color-sand-400: #b8ad9e;
+  --color-sand-500: #9d8f7d;
+  --color-sand-600: #7d6f5f;
+  --color-sand-700: #5f5447;
+  --color-sand-800: #3d362e;
+  --color-sand-900: #2a251f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-sand-50 text-sand-900 antialiased;
+    font-family: var(--font-family-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
