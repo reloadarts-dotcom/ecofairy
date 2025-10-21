@@ -1,7 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export default function Footer() {
+  const pathname = usePathname()
+  const isSpanish = pathname?.startsWith('/es')
+
   return (
     <footer className="bg-sand-100 border-t border-sand-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
@@ -21,53 +27,60 @@ export default function Footer() {
               </h3>
             </div>
             <p className="text-sand-600 leading-relaxed mb-6 max-w-md">
-              Professional eco-friendly cleaning services in the heart of Marbella.
-              Bringing elegance and pristine cleanliness to Costa del Sol.
+              {isSpanish
+                ? 'Servicios profesionales de limpieza ecológica en el corazón de Marbella. Brindando elegancia y limpieza inmaculada a la Costa del Sol.'
+                : 'Professional eco-friendly cleaning services in the heart of Marbella. Bringing elegance and pristine cleanliness to Costa del Sol.'}
             </p>
           </div>
 
           <div className="col-span-1 md:col-span-2">
-            <h4 className="text-sm uppercase tracking-wider text-sand-900 mb-6">Navigate</h4>
+            <h4 className="text-sm uppercase tracking-wider text-sand-900 mb-6">
+              {isSpanish ? 'Navegar' : 'Navigate'}
+            </h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/" className="text-sand-600 hover:text-sand-900 transition-colors">
-                  Home
+                <Link href={isSpanish ? "/es" : "/"} className="text-sand-600 hover:text-sand-900 transition-colors">
+                  {isSpanish ? 'Inicio' : 'Home'}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-sand-600 hover:text-sand-900 transition-colors">
-                  About
+                <Link href={isSpanish ? "/es/about" : "/about"} className="text-sand-600 hover:text-sand-900 transition-colors">
+                  {isSpanish ? 'Nosotros' : 'About'}
                 </Link>
               </li>
               <li>
-                <Link href="/pricelist" className="text-sand-600 hover:text-sand-900 transition-colors">
-                  Services
+                <Link href={isSpanish ? "/es/pricelist" : "/pricelist"} className="text-sand-600 hover:text-sand-900 transition-colors">
+                  {isSpanish ? 'Servicios' : 'Services'}
                 </Link>
               </li>
               <li>
-                <Link href="/team" className="text-sand-600 hover:text-sand-900 transition-colors">
-                  Team
+                <Link href={isSpanish ? "/es/team" : "/team"} className="text-sand-600 hover:text-sand-900 transition-colors">
+                  {isSpanish ? 'Equipo' : 'Team'}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div className="col-span-1 md:col-span-3">
-            <h4 className="text-sm uppercase tracking-wider text-sand-900 mb-6">Contact</h4>
+            <h4 className="text-sm uppercase tracking-wider text-sand-900 mb-6">
+              {isSpanish ? 'Contacto' : 'Contact'}
+            </h4>
             <ul className="space-y-3 text-sand-600">
               <li>Marbella, Costa del Sol</li>
-              <li>Spain</li>
+              <li>{isSpanish ? 'España' : 'Spain'}</li>
               <li className="pt-2">
                 <a href="tel:+34607079332" className="hover:text-sand-900 transition-colors">
                   +34 607 079 332
                 </a>
               </li>
-              <li className="text-sm">Daily: 9:00 — 18:00</li>
+              <li className="text-sm">{isSpanish ? 'Diario: 9:00 — 18:00' : 'Daily: 9:00 — 18:00'}</li>
             </ul>
           </div>
 
           <div className="col-span-1 md:col-span-2">
-            <h4 className="text-sm uppercase tracking-wider text-sand-900 mb-6">Follow</h4>
+            <h4 className="text-sm uppercase tracking-wider text-sand-900 mb-6">
+              {isSpanish ? 'Seguir' : 'Follow'}
+            </h4>
             <div className="flex space-x-4">
               <a href="#" className="text-sand-600 hover:text-sand-900 transition-colors">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
