@@ -6,6 +6,10 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'EcoFairy Cleaning - Professional Cleaning Services in Marbella',
   description: 'Professional eco-friendly cleaning services in Marbella for homes, offices, and commercial spaces. Book your cleaning today!',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
